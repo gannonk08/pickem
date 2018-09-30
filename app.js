@@ -159,6 +159,8 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 app.get('/picks', teamsController.getAll);
 app.post('/teams/pick', teamsController.submitPick);
 app.get('/schedule', scheduleController.getWeek);
+app.get('/schedule', scheduleController.getWeek);
+app.get('/schedule/week', scheduleController.renderWeek);
 
 
 

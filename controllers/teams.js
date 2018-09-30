@@ -1,5 +1,6 @@
 const connectionString = process.env.DATABASE_URL;
 const pg = require('pg');
+const fetch = require('node-fetch');
 
 exports.getAll = (req, res) => {
   var results = [];
@@ -8,12 +9,17 @@ exports.getAll = (req, res) => {
   client.query('SELECT * FROM teams', (err, dbrs) => {
     results = dbrs.rows.map(c => c["abrv"])
     client.end()
-    res.render('picks',
-      {
-        teams: results,
-        title: 'picks'
-      }
-    )
+    fetch('http://localhost:8080/schedule')
+      .then(response => response.json())
+      .then(json => {
+        res.render('picks',
+          {
+            schedule: json,
+            teams: results,
+            title: 'picks'
+          }
+        )
+      })
   })
 };
 
