@@ -10,4 +10,5 @@ block content
                 select(name='dropDown', id='teams')
                     each team in teams
                         option=team
+                    input(type='hidden', name='_csrf', value=_csrf)
                     input(type='submit', value='Submit')
