@@ -1,6 +1,6 @@
 CREATE TABLE teams (
   id SERIAL PRIMARY KEY NOT NULL,
-  abrv VARCHAR DEFAULT NULL,
+  abrv VARCHAR(3) UNIQUE NOT NULL,
   city VARCHAR DEFAULT NULL,
   name VARCHAR DEFAULT NULL
 );
@@ -38,3 +38,5 @@ VALUES ('ARI', 'Cardinals', 'Arizona'),
   ('TB', 'Buccaneers', 'Tampa Bay'),
   ('TEN', 'Titans', 'Tennessee'),
   ('WAS', 'Redskins', 'Washington');
+
+DROP TABLE teams;
