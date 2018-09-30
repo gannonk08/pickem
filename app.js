@@ -98,6 +98,13 @@ app.use((req, res, next) => {
 });
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
+app.use(function (req, res, next) {
+  if (req.path === '/teams/pick') {
+    next();
+  } else {
+    lusca.csrf()(req, res, next);
+  }
+});
 app.disable('x-powered-by');
 app.use((req, res, next) => {
   res.locals.user = req.user;
@@ -148,6 +155,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
  * Experimental Routes
  */
 app.get('/teams', teamsController.getAll);
+app.post('/teams/pick', teamsController.submitPick);
 
 
 

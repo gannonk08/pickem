@@ -10,5 +10,11 @@ exports.getAll = (req, res) => {
         client.end()
         res.render('teams', { teams: results})
     })
+};
+
+exports.submitPick = (req, res) => {
+    console.log(req.body)
+    res.render('teams')
 
 };
+

@@ -5,7 +5,7 @@ block content
     hr
     .row
         .col-md-6
-            form(action='/SkillOpted' method="post")
+            form(action='/teams/pick' method="post")
                 label(for='teams') Teams
                 select(name='dropDown', id='teams')
                     each team in teams
