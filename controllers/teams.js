@@ -1,6 +1,7 @@
 const connectionString = process.env.DATABASE_URL;
 const pg = require('pg');
 const fetch = require('node-fetch');
+const picksQueries = require('../models/Picks.js');
 const serverLoc = process.env.BASE_URL || 'http://localhost:8080'
 
 exports.getAll = (req, res) => {
@@ -25,7 +26,7 @@ exports.getAll = (req, res) => {
 };
 
 exports.submitPick = (req, res) => {
-  console.log(req)
-  res.sendStatus(200);
+  console.log(req.body)
+  return picksQueries.addUserPick('abc123',2018,5,req.body.team, res)
 };
 
